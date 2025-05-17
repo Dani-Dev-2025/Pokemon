@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.io.Serializable;
+
 /**
  * la clase PokemonPlanta simula un pokémon de tipo planta como puede ser
  * Bulbasaur. Es hija de la clase Pokemon, por lo que hereda sus atributos y sus
@@ -8,11 +10,11 @@ package pokemon;
  * encuenta que el pokémon elegido es de tipo planta.
  * 
  * @author Daniel Pacheco
- * @version 1.0
- * @since 2025/04/08
+ * @version 1.2
+ * @since 2025/05/05
  */
 
-public class PokemonPlanta extends Pokemon implements Ataque {
+public class PokemonPlanta extends Pokemon implements Ataque, Serializable {
 
 	/**
 	 * constructor por defecto que hereda los atributos de la clase padre Pokemon
@@ -80,18 +82,18 @@ public class PokemonPlanta extends Pokemon implements Ataque {
 			salvaje.setVida(salvaje.getVida() - (danio * 0.8)); // si el pokémon salvaje es una instancia de
 																// PokemonFuego, le resta el daño base menos un 20%
 			System.out.println(
-					salvaje.getNombre() + " recibe -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 
 		} else if (salvaje.getClass() == PokemonAgua.class) {
 			salvaje.setVida(salvaje.getVida() - (danio * 1.2)); // si el pokémon salvaje es una instancia de
 																// PokemonAgua, le resta el daño base más un 20%
 			System.out.println(
-					salvaje.getNombre() + " recibe +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		} else {
 			salvaje.setVida(salvaje.getVida() - danio); // si el pokémon salvaje no es una instancia de PokemonFuego o
 														// PokemonAgua le resta el daño base
 			System.out.println(
-					salvaje.getNombre() + " recibe daño normal · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + " de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		}
 	}
 }

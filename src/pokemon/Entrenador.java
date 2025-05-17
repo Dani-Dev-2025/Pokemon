@@ -1,5 +1,6 @@
 package pokemon;
 
+import java.io.Serializable;
 // importamos las librerías que necesitamos
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,11 +17,11 @@ import java.util.Scanner;
  *
  * 
  * @author Daniel Pacheco
- * @version 1.0
- * @since 2025/04/08
+ * @version 1.2
+ * @since 2025/05/05
  */
 
-public class Entrenador {
+public class Entrenador implements Serializable {
 
 	static final int MAX_POKEMON = 6; // cantidad máxima de pokémos que puede haber en el equipo
 	private String nombre; // nombre del entrenador
@@ -148,10 +149,11 @@ public class Entrenador {
 	 * realiza mediante entrada por teclado, ajustando la misma al índice del
 	 * ArrayList restándole 1. Con un try - catch, si el usuario introduce un número
 	 * fuera del rango, lo comunica.
-	 *
+	 * 
+	 * @param scanner - lee el pokémon elegido por el usuario
 	 */
 
-	public void elegirPokemon() {
+	public void elegirPokemon(Scanner scanner) {
 
 		if (equipo.isEmpty()) { // si el equipo está vacío, lo comunica
 			System.out.println("actualmente no tienes pokémons en tu equipo \n");
@@ -166,8 +168,9 @@ public class Entrenador {
 		System.out.println("elige uno");
 
 		try {
-			Scanner scanner = new Scanner(System.in);
+	
 			int eleccion = scanner.nextInt() - 1; // se ajusta la elección al índice del ArrayList
+			scanner.nextLine(); // limpiar buffer
 			if (eleccion < equipo.size()) { // si la elección es menor que el tamaño del equipo,se continúa
 				Juego.pokemonElegido = equipo.get(eleccion);
 				System.out.println("has elegido a " + Juego.pokemonElegido.getNombre());
@@ -176,6 +179,7 @@ public class Entrenador {
 			}
 		} catch (Exception e) {
 			System.out.println("No has introducido un valor válido \n");
+			scanner.nextLine(); // limpiar buffer
 		}
 
 	}

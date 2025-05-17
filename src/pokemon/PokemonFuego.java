@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.io.Serializable;
+
 /**
  * la clase PokemonFuego simula un pokémon de tipo fuego como puede ser
  * Charmander. Es hija de la clase Pokemon, por lo que hereda sus atributos y
@@ -8,11 +10,11 @@ package pokemon;
  * teniendo encuenta que el pokémon elegido es de tipo fuego
  * 
  * @author Daniel Pacheco
- * @version 1.0
- * @since 2025/04/08
+ * @version 1.2
+ * @since 2025/05/05
  */
 
-public class PokemonFuego extends Pokemon implements Ataque {
+public class PokemonFuego extends Pokemon implements Ataque, Serializable {
 	
 	/**
 	 * constructor por defecto que hereda los atributos de la clase padre Pokemon
@@ -78,16 +80,16 @@ public class PokemonFuego extends Pokemon implements Ataque {
 		if (salvaje.getClass() == PokemonAgua.class) { // si el pokémon salvaje es una instancia de PokemonAgua, le resta el daño base menos un 20%
 			salvaje.setVida(salvaje.getVida() - (danio * 0.8));
 			System.out.println(
-					salvaje.getNombre() + " recibe -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 
 		} else if (salvaje.getClass() == PokemonPlanta.class) { // si el pokémon salvaje es una instancia de PokemonPlanta, le resta el daño base más un 20%
 			salvaje.setVida(salvaje.getVida() - (danio * 1.2));
 			System.out.println(
-					salvaje.getNombre() + " recibe +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		} else {
 			salvaje.setVida(salvaje.getVida() - danio); // si el pokémon salvaje no es una instancia de PokemonAgua o PokemonPlanta le resta el daño base
 			System.out.println(
-					salvaje.getNombre() + " recibe daño normal · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + " de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		}
 	}
 

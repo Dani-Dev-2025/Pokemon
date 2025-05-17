@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.io.Serializable;
+
 /**
  * la clase PokemonAgua simula un pokémon de tipo agua como puede ser Squirtle.
  * Es hija de la clase Pokemon, por lo que hereda sus atributos y sus métodos,
@@ -8,11 +10,11 @@ package pokemon;
  * encuenta que el pokémon elegido es de tipo agua
  * 
  * @author Daniel Pacheco
- * @version 1.0
- * @since 2025/04/08
+ * @version 1.2
+ * @since 2025/05/05
  */
 
-public class PokemonAgua extends Pokemon implements Ataque {
+public class PokemonAgua extends Pokemon implements Ataque, Serializable {
 
 	/**
 	 * constructor por defecto que hereda los atributos de la clase padre Pokemon
@@ -77,16 +79,16 @@ public class PokemonAgua extends Pokemon implements Ataque {
 		if (salvaje.getClass() == PokemonFuego.class) {
 			salvaje.setVida(salvaje.getVida() - (danio * 1.2)); // si el pokémon salvaje es una instancia de PokemonFuego, le resta el daño base más un 20%
 			System.out.println(
-					salvaje.getNombre() + " recibe +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + " +20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 
 		} else if (salvaje.getClass() == PokemonPlanta.class) {
 			salvaje.setVida(salvaje.getVida() - (danio * 0.8)); // si el pokémon salvaje es una instancia de PokemonPlanta, le resta el daño base menos un 20%
 			System.out.println(
-					salvaje.getNombre() + " recibe -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  -20% de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		} else {
 			salvaje.setVida(salvaje.getVida() - danio); // si el pokémon salvaje no es una instancia de PokemonFuego o PokemonPlanta le resta el daño base
 			System.out.println(
-					salvaje.getNombre() + " recibe daño normal · le quedan " + salvaje.getVida() + " puntos de vida");
+					salvaje.getNombre() + " recibe " + danio + "  de daño · le quedan " + salvaje.getVida() + " puntos de vida");
 		}
 	}
 }

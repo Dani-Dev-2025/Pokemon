@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.io.Serializable;
+
 /**
  * la clase Pokemon simula un Pokémon sin definir, por ello es abstracta, ya que
  * no queremos instanciarla directamente, sino a través de sus clases hijas
@@ -12,12 +14,12 @@ package pokemon;
  * el de su rival.
  * 
  * @author Daniel Pacheco
- * @version 1.0
- * @since 2025/04/08
+ * @version 1.2
+ * @since 2025/05/05
  * 
  */
 
-public abstract class Pokemon {
+public abstract class Pokemon implements Serializable {
 
 	private String nombre; // el nombre del pokémon
 	private int nivel; // su nivel
